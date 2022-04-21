@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body
+    class="p-3 mb-2 bg-secondary text-white nes-text text-left container d-flex justify-content-center align-items-center">
+    <div class="nes-container is-dark">
+        <div style=" padding: 1rem;" class="nes-field is-inline">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            <p style="background-color:rgb(255, 0, 0); color: black; font-size: medium;">{{message}}</p>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <form action="/addrecipe" method="post">
+
+                <h1 style="color:white;">New Recipe</h1>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" class="form-control"> 
+                        
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea  class="align-middle" name="description" cols="40" rows="3" ></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="instructions">Instructions:</label>
+                    <textarea class="align-middle" name="instructions" cols="40" rows="3" ></textarea>
+                </div>
+                <div class="mb-3 text-center">
+                    <label for="date">Date made on:</label>
+                    <input type="date" name="created_at" >
+                </div>
+                
+                <p>Under 30 mins?</p>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="under_30" id="inlineRadio1" value="yes">
+                    <label class="form-check-label" for="inlineRadio1">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="under_30" id="inlineRadio2" value="no" >
+                    <label class="form-check-label" for="inlineRadio2">No</label>
+                </div>
+                <div>
+                    <input type="submit" value="Update" class="btn btn-primary">
+                    <a href="/dashboard" style="color: white;" class="btn btn-primary">Home</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

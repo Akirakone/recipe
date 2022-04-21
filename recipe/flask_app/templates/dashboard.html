@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div>
+        <h1 style="background-color:#05588b;" class="text-white">Welcome {{users.first_name}}!
+            <a href="/recipe/new" style="color: white;" class="btn btn-primary">Add Recipe</a>
+            <a href="/logout" class="btn btn-info">Logout</a>
+        </h1>
+    </div>
+    <h2>Here are the recipes</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="col-md-1">Name </th>
+                    <th class="col-md-2">Under 30 Minutes?</th>
+                    <th class="col-md-3">Actions</th>
+                </tr>
+            </thead>
+            {% for recipe in recipes %}
+        <tr> 
+            <td>{{recipe.name}}</td>
+            <td>{{recipe.under_30}}</td>
+            <td>
+                <a href="/show_recipe/{{recipe.id}}" class="text-warning"> View Instructions</a> |
+                <a href="/edit/{{recipe.id}}"class="text-success">Edit</a> |
+                <a href="/delete/{{recipe.id}}"class="text-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+</body>
+
+</html>
